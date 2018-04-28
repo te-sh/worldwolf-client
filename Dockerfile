@@ -8,4 +8,4 @@ COPY package.json package-lock.json ./
 RUN npm install --no-progress
 ENV PATH=$PATH:$APP/node_modules/.bin
 
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT ["npm", "run", "start-dev"]
