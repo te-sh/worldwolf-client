@@ -1,0 +1,41 @@
+<form (ngSubmit)="chat()" fxLayout="row">
+  <mat-form-field class="text" fxFlex="1 1 auto">
+    <input matInput placeholder="発言内容" name="text" [(ngModel)]="text">
+  </mat-form-field>
+  <button mat-button type="submit">発言</button>
+</form>
+
+<mat-list>
+  <mat-list-item *ngFor="let chat of chats$ | async">
+    <ng-container [ngSwitch]="chat.action">
+      <ng-container *ngSwitchCase="'chat'">
+        <b>{{ chat.user }}</b> &gt; {{ chat.text }}
+      </ng-container>
+      <ng-container *ngSwitchCase="'enter'">
+        <b>{{ chat.user }}</b> が入室しました
+      </ng-container>
+      <ng-container *ngSwitchCase="'leave'">
+        <b>{{ chat.user }}</b> が退室しました
+      </ng-container>
+      <ng-container *ngSwitchCase="'set-game'">
+        <b>{{ chat.user }}</b> が出題中です
+      </ng-container>
+      <ng-container *ngSwitchCase="'start-game'">
+        <b>{{ chat.user }}</b> が出題しました
+      </ng-container>
+      <ng-container *ngSwitchCase="'finish-game'">
+        <ng-container [ngSwitch]="chat.reason">
+          <ng-container *ngSwitchCase="'cancel'">
+            出題がキャンセルされました
+          </ng-container>
+          <ng-container *ngSwitchCase="'finish'">
+            ゲームが終了しました
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'word'">
+        あなたのお題は <b>{{ chat.word }}</b> です
+      </ng-container>
+    </ng-container>
+  </mat-list-item>
+</mat-list>

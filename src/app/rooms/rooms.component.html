@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>World Wolf</span>
+</mat-toolbar>
+
+<mat-table [dataSource]="rooms">
+  <ng-container matColumnDef="name">
+    <mat-cell *matCellDef="let room">{{ room.name }}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="usersCount">
+    <mat-cell *matCellDef="let room">
+      <ng-container *ngIf="room.users_count; then notEmpty; else empty"></ng-container>
+      <ng-template #notEmpty>{{ room.users_count }}人</ng-template>
+      <ng-template #empty><span class="empty">空室</span></ng-template>
+    </mat-cell>
+  </ng-container>
+  <mat-row *matRowDef="let room; columns: ['name', 'usersCount'];"
+           (click)="enter(room)">
+  </mat-row>
+</mat-table>

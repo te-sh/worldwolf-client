@@ -1,0 +1,26 @@
+<form (ngSubmit)="update()">
+  <mat-dialog-content>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="村人ワード" name="normal_word" [(ngModel)]="game.normal_word">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="狼ワード" name="wolf_word" [(ngModel)]="game.wolf_word">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-selection-list #wolves>
+        <mat-list-option *ngFor="let player of players" [value]="player.id">
+          {{ player.name }}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+    <div *ngIf="error" class="error">入力に誤りがあります</div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit">出題</button>
+    <button mat-button type="button" (click)="dismiss()">キャンセル</button>
+  </mat-dialog-actions>
+</form>

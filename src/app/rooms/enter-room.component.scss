@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+mat-form-field {
+  width: 100%;
+}
+
+.room-name {
+  margin-bottom: 1ex;
+}
+
+.error {
+  color: mat-color($mat-red, 700);
+}

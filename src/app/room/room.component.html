@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+  <span>World Wolf</span>
+  <ng-container *ngIf="user">
+    <div fxLayoutAlign="flex-start center" fxLayoutGap="0.2em">
+      <mat-icon class="account-icon">account_circle</mat-icon>
+      <span>{{ user.name }}</span>
+    </div>
+    <button mat-icon-button type="button" class="exit"
+            [disabled]="user?.active && room?.game"
+            (click)="exit()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-toolbar fxLayoutGap="1em">
+  <ng-container *ngIf="room">
+    <div fxLayoutAlign="flex-start center" fxLayoutGap="0.2em">
+      <mat-icon>chat</mat-icon>
+      <span>{{ room.name }}</span>
+    </div>
+    <ng-container [ngSwitch]="roomStatus">
+      <span *ngSwitchCase="'idle'">待機中</span>
+      <span *ngSwitchCase="'set-game'">出題中</span>
+      <span *ngSwitchCase="'play-game'">ゲーム中</span>
+    </ng-container>
+    <button mat-button type="button" class="set-game"
+            [disabled]="!user?.active || room?.game"
+            (click)="setGame()">
+      出題
+    </button>
+    <button mat-button type="button" class="vote"
+            *ngIf="roomStatus == 'play-game' && user.id != room?.game.creator_id"
+            (click)="vote()">
+      投票
+    </button>
+    <ng-container *ngIf="room?.game as game">
+      <button mat-button type="button" class="finish-game"
+              (click)="finishGame()">
+        <ng-container *ngIf="game.creator_id == user.id; then finish; else reset">
+        </ng-container>
+        <ng-template #finish>ゲーム終了</ng-template>
+        <ng-template #reset>リセット</ng-template>
+      </button>
+    </ng-container>
+  </ng-container>
+</mat-toolbar>
+
+<div class="users">
+  <app-users [users]="room?.users" [game]="room?.game">
+  </app-users>
+</div>
+
+<app-chat></app-chat>

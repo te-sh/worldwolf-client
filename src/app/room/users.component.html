@@ -1,0 +1,10 @@
+<mat-card>
+  <div class="users" fxLayout="row" fxLayoutGap="0.5em">
+    <div *ngFor="let user of users" class="user"
+         [class.active]="user.active"
+         [class.setter]="user.id == game?.creator_id"
+         (click)="activate(user)">
+      <span>{{ user.name }}</span>
+    </div>
+  </div>
+</mat-card>
