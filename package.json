@@ -2,6 +2,9 @@
   "name": "worldwolf",
   "version": "0.0.1",
   "license": "MIT",
+  "engines": {
+    "node": "8.11.1"
+  },
   "scripts": {
     "ng": "ng",
     "start": "node server",
