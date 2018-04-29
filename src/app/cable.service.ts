@@ -24,7 +24,7 @@ export class CableService {
   };
 
   connect(user: User) {
-    const cable = ActionCable.createConsumer(`${url}/cable`);
+    const cable = ActionCable.createConsumer(`${url}/cable?user_id=${user.id}`);
 
     this.roomChannel = cable.subscriptions
       .create({ channel: 'RoomChannel', user_id: user.id }, this.callbacks);

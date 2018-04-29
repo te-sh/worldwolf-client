@@ -36,6 +36,9 @@
       <ng-container *ngSwitchCase="'word'">
         あなたのお題は <b>{{ chat.word }}</b> です
       </ng-container>
+      <ng-container *ngSwitchCase="'expire'">
+        この部屋は一定時間使用されなかったため閉鎖されます
+      </ng-container>
     </ng-container>
   </mat-list-item>
 </mat-list>
