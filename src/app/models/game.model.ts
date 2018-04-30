@@ -1,3 +1,5 @@
+import { User } from './user.model';
+
 export class Game {
   id?: string;
   room_id?: string;
@@ -6,4 +8,5 @@ export class Game {
   normal_word?: string;
   wolf_word?: string;
   game_wolves_attributes?: { wolf_id: string }[];
+  wolves?: User[];
 }

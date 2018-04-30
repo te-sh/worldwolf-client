@@ -6,12 +6,15 @@ import { environment } from '../environments/environment';
 import { Room } from './models/room.model';
 import { User } from './models/user.model';
 import { Chat } from './models/chat.model';
+import { Vote } from './models/vote.model';
 
 const url = environment.api.websocket;
 
 export class CableService {
+
   room$ = new Subject<Room>();
   chats$ = new Subject<Chat[]>();
+  votes$ = new Subject<Vote[]>();
 
   private chats: Chat[] = [];
   private roomChannel: ActionCable.Channel;
@@ -54,6 +57,10 @@ export class CableService {
         this.chats = [obj.data].concat(this.chats);
         this.chats$.next(this.chats);
         break;
+      case 'votes':
+        this.votes$.next(obj.data);
+        break;
     }
   }
+
 }

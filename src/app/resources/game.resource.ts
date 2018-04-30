@@ -13,6 +13,11 @@ export class GameResource {
 
   constructor(private http: HttpClient) { }
 
+  get(game_id: string) {
+    return this.http.get(`${url}/games/${game_id}`)
+      .pipe(map((game) => game as Game));
+  }
+
   create(game: Game) {
     const param = _.pick(game, ['room_id', 'creator_id']);
     return this.http.post(`${url}/games`, param)

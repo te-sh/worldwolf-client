@@ -1,0 +1,24 @@
+<form (ngSubmit)="disclose()">
+  <mat-dialog-content fxLayout="column" fxLayoutGap="1ex">
+    <div>
+      <div class="field-label">村人ワード</div>
+      <div>{{ game.normal_word }}</div>
+    </div>
+    <div>
+      <div class="field-label">狼ワード</div>
+      <div>{{ game.wolf_word }}</div>
+    </div>
+    <div>
+      <div class="field-label">狼</div>
+      <div>
+        <div *ngFor="let wolf of game.wolves">
+          {{ wolf.name }}
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit">公開</button>
+    <button mat-button type="button" (click)="dismiss()">キャンセル</button>
+  </mat-dialog-actions>
+</form>

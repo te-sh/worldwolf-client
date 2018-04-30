@@ -1,1 +1,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+
+.field-label {
+  font-size: smaller;
+  color: mat-color($mat-deep-purple, 500);
+}

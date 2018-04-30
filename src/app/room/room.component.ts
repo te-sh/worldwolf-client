@@ -11,6 +11,9 @@ import { UserResource } from '../resources/user.resource';
 import { GameResource } from '../resources/game.resource';
 import { CableService } from '../cable.service';
 import { SetGameComponent } from './set-game.component';
+import { GameContentComponent  } from './game-content.component';
+import { VoteStatusComponent } from './vote-status.component';
+import { VoteComponent } from './vote.component';
 
 @Component({
   selector: 'app-room',
@@ -46,9 +49,9 @@ export class RoomComponent implements OnInit, OnDestroy {
   private loadUser() {
     this.userResource.getMine()
       .subscribe(
-        (user) => {
-          this.user = user;
-          this.cableService.connect(user);
+        (res) => {
+          this.user = res;
+          this.cableService.connect(this.user);
           this.loadRoom();
         },
         () => this.router.navigate(['/'])
@@ -61,7 +64,7 @@ export class RoomComponent implements OnInit, OnDestroy {
         map((paramMap) => paramMap.get('id')),
         concatMap((room_id) => this.roomResource.get(room_id))
       )
-      .subscribe((room) => this.setRoom(room));
+      .subscribe((res) => this.setRoom(res));
   }
 
   private setRoom(room: Room) {
@@ -81,7 +84,16 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.dialog.open(SetGameComponent, { data: { room: this.room, user: this.user } });
   }
 
+  gameContent() {
+    this.dialog.open(GameContentComponent, { data: { room: this.room } });
+  }
+
+  voteStatus() {
+    this.dialog.open(VoteStatusComponent, { data: { room: this.room, user: this.user } });
+  }
+
   vote() {
+    this.dialog.open(VoteComponent, { data: { room: this.room, user: this.user } });
   }
 
   finishGame() {

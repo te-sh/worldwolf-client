@@ -34,7 +34,7 @@ export class SetGameComponent implements OnInit {
     const game = { room_id: room.id, creator_id: user.id };
     this.dialogRef.afterOpen()
       .pipe(concatMap(() => this.gameResource.create(game)))
-      .subscribe((newGame) => this.game = newGame);
+      .subscribe((res) => this.game = res);
   }
 
   update() {
@@ -42,7 +42,7 @@ export class SetGameComponent implements OnInit {
     this.game.game_wolves_attributes = selected.map((option) => ({ wolf_id: option.value }));
     this.gameResource.update(this.game)
       .subscribe(
-        (game) => this.dialogRef.close(game),
+        (res) => this.dialogRef.close(res),
         () => this.error = true
       );
   }
