@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import * as _ from 'lodash';
 
 import { Room } from '../models/room.model';
 import { Game } from '../models/game.model';
@@ -25,6 +26,11 @@ export class GameContentComponent implements OnInit {
 
     this.gameResource.get(room.game.id)
       .subscribe((res) => this.game = res);
+  }
+
+  disclose() {
+    this.gameResource.disclose(this.game)
+      .subscribe(_.noop);
   }
 
   dismiss() {

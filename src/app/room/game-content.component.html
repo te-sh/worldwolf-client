@@ -1,5 +1,5 @@
 <form (ngSubmit)="disclose()">
-  <mat-dialog-content fxLayout="column" fxLayoutGap="1ex">
+  <mat-dialog-content fxLayout="column" fxLayoutGap="1ex" *ngIf="game">
     <div>
       <div class="field-label">村人ワード</div>
       <div>{{ game.normal_word }}</div>

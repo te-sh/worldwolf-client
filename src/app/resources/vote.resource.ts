@@ -25,4 +25,8 @@ export class VoteResource {
       .pipe(map((vote) => vote as Vote));
   }
 
+  disclose(game: Game) {
+    return this.http.post(`${url}/votes/disclose`, { game_id: game.id });
+  }
+
 }

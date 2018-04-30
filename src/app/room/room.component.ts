@@ -69,7 +69,11 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   private setRoom(room: Room) {
     this.room = room;
-    this.user.active = this.room.users.find((user) => user.id == this.user.id).active;
+
+    const user = this.room.users.find((user) => user.id == this.user.id);
+    if (user) {
+      this.user.active = user.active;
+    }
 
     if (!room.game) {
       this.roomStatus = 'idle';

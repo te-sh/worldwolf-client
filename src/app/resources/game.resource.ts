@@ -35,4 +35,8 @@ export class GameResource {
       .pipe(map((game) => game as Game));
   }
 
+  disclose(game: Game) {
+    return this.http.post(`${url}/games/${game.id}/disclose`, {});
+  }
+
 }

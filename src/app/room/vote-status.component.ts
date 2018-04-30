@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MatTable, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import * as _ from 'lodash';
 
 import { Room } from '../models/room.model';
 import { User } from '../models/user.model';
+import { Game } from '../models/game.model';
 import { Vote } from '../models/vote.model';
 import { VoteResource } from '../resources/vote.resource';
 import { CableService } from '../cable.service';
@@ -15,6 +17,7 @@ import { CableService } from '../cable.service';
 export class VoteStatusComponent implements OnInit {
 
   players: User[];
+  game: Game;
   votes: Vote[] = [];
 
   constructor(
@@ -27,6 +30,7 @@ export class VoteStatusComponent implements OnInit {
   ngOnInit() {
     const room = this.data.room as Room, user = this.data.user as User;
 
+    this.game = room.game;
     this.players = room.users.filter((player) => player.active && player.id !== room.game.creator_id);
     this.voteResource.list(room.game)
       .subscribe((res) => this.votes = res);
@@ -35,8 +39,13 @@ export class VoteStatusComponent implements OnInit {
   }
 
   votee(player: User) {
-    const vote = this.votes.find((vote) => vote.votee.id == player.id);
+    const vote = this.votes.find((vote) => vote.voter.id == player.id);
     return vote ? vote.votee : undefined;
+  }
+
+  disclose() {
+    this.voteResource.disclose(this.game)
+      .subscribe(_.noop);
   }
 
   dismiss() {

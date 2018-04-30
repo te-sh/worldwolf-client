@@ -1,6 +1,6 @@
 <form (ngSubmit)="run()">
   <mat-dialog-content>
-    <mat-select placeholder="投票先" [(value)]="vote.votee_id">
+    <mat-select class="votee" placeholder="投票先" [(value)]="vote.votee_id">
       <mat-option *ngFor="let player of players" [value]="player.id">
         {{ player.name }}
       </mat-option>
