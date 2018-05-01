@@ -23,6 +23,7 @@ import { UserResource } from './resources/user.resource';
 import { GameResource } from './resources/game.resource';
 import { VoteResource } from './resources/vote.resource';
 import { CableService } from './cable.service';
+import { TokenService } from './token.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CableService } from './cable.service';
     UserResource,
     GameResource,
     VoteResource,
-    CableService
+    CableService,
+    TokenService
   ],
   entryComponents: [
     EnterRoomComponent,
