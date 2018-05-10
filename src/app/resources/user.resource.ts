@@ -31,7 +31,8 @@ export class UserResource {
   }
 
   create(roomId: string, name: string, pass: string) {
-    return this.http.post(`${url}/users`, { roomId, name, pass })
+    const param = { room_id: roomId, name, pass };
+    return this.http.post(`${url}/users`, param)
       .pipe(
         map((res) => res as User),
         tap((res) => this.tokenService.set(res.token))
