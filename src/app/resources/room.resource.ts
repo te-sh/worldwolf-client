@@ -14,12 +14,12 @@ export class RoomResource {
 
   list() {
     return this.http.get(`${url}/rooms`)
-      .pipe(map((rooms) => rooms as Room[]));
+      .pipe(map((res) => res as Room[]));
   }
 
-  get(room_id: string) {
-    return this.http.get(`${url}/rooms/${room_id}`)
-      .pipe(map((room) => room as Room));
+  get(roomId: string) {
+    return this.http.get(`${url}/rooms/${roomId}`)
+      .pipe(map((res) => res as Room));
   }
 
 }

@@ -62,7 +62,7 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.route.paramMap
       .pipe(
         map((paramMap) => paramMap.get('id')),
-        concatMap((room_id) => this.roomResource.get(room_id))
+        concatMap((roomId) => this.roomResource.get(roomId))
       )
       .subscribe((res) => this.setRoom(res));
   }
@@ -70,7 +70,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   private setRoom(room: Room) {
     this.room = room;
 
-    const user = this.room.users.find((user) => user.id == this.user.id);
+    const user = this.room.users.find((u) => u.id === this.user.id);
     if (user) {
       this.user.active = user.active;
     }

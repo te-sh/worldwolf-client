@@ -39,7 +39,7 @@ export class VoteStatusComponent implements OnInit {
   }
 
   votee(player: User) {
-    const vote = this.votes.find((vote) => vote.voter.id == player.id);
+    const vote = this.votes.find((v) => v.voter.id === player.id);
     return vote ? vote.votee : undefined;
   }
 

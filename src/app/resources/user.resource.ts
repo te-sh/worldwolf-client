@@ -19,29 +19,29 @@ export class UserResource {
 
   getMine() {
     return this.http.get(`${url}/users/mine`)
-      .pipe(map((user) => user as User));
+      .pipe(map((res) => res as User));
   }
 
   deleteMine() {
     return this.http.delete(`${url}/users/mine`)
       .pipe(
-        map((user) => user as User),
-        tap((user) => this.tokenService.reset)
+        map((res) => res as User),
+        tap((res) => this.tokenService.reset)
       );
   }
 
-  create(room_id: string, name: string, pass: string) {
-    return this.http.post(`${url}/users`, { room_id, name, pass })
+  create(roomId: string, name: string, pass: string) {
+    return this.http.post(`${url}/users`, { roomId, name, pass })
       .pipe(
-        map((user) => user as User),
-        tap((user) => this.tokenService.set(user.token))
+        map((res) => res as User),
+        tap((res) => this.tokenService.set(res.token))
       );
   }
 
   update(user: User) {
     const param = _.pick(user, ['active']);
     return this.http.patch(`${url}/users/${user.id}`, param)
-      .pipe(map((user) => user as User));
+      .pipe(map((res) => res as User));
   }
 
 }

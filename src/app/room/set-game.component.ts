@@ -30,7 +30,7 @@ export class SetGameComponent implements OnInit {
     const room = this.data.room as Room, user = this.data.user as User;
 
     this.players = room.users.filter((player) => player.active && player.id !== user.id);
-    
+
     const game = { room_id: room.id, creator_id: user.id };
     this.dialogRef.afterOpen()
       .pipe(concatMap(() => this.gameResource.create(game)))

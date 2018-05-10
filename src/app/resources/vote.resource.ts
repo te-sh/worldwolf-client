@@ -16,13 +16,13 @@ export class VoteResource {
 
   list(game: Game) {
     return this.http.get(`${url}/votes`, { params: { game_id: game.id } })
-      .pipe(map((votes) => votes as Vote[]));
+      .pipe(map((res) => res as Vote[]));
   }
 
   create(vote: Vote) {
     const param = _.pick(vote, ['game_id', 'voter_id', 'votee_id']);
     return this.http.post(`${url}/votes`, param)
-      .pipe(map((vote) => vote as Vote));
+      .pipe(map((res) => res as Vote));
   }
 
   disclose(game: Game) {
