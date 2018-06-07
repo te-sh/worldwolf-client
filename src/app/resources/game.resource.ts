@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 
 import { environment } from '../../environments/environment';
-import { Game } from '../models/game.model';
+import { Game, Word } from '../models/game.model';
 
 const url = environment.api.http;
 
@@ -33,6 +33,11 @@ export class GameResource {
   delete(game: Game) {
     return this.http.delete(`${url}/games/${game.id}`)
       .pipe(map((res) => res as Game));
+  }
+
+  word(game: Game) {
+    return this.http.get(`${url}/games/${game.id}/word`)
+      .pipe(map((res) => res as Word));
   }
 
   disclose(game: Game) {

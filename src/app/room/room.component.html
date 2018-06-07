@@ -33,6 +33,11 @@
 <mat-toolbar *ngIf="roomStatus == 'play-game'">
   <button mat-button type="button" class="vote"
           *ngIf="user.id != room.game.creator_id"
+          (click)="word()">
+    ワード
+  </button>
+  <button mat-button type="button" class="vote"
+          *ngIf="user.id != room.game.creator_id"
           (click)="vote()">
     投票
   </button>

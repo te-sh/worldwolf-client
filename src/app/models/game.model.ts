@@ -10,3 +10,7 @@ export class Game {
   game_wolves_attributes?: { wolf_id: string }[];
   wolves?: User[];
 }
+
+export class Word {
+  word: string;
+}

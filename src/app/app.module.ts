@@ -15,9 +15,10 @@ import { RoomComponent } from './room/room.component';
 import { UsersComponent } from './room/users.component';
 import { ChatComponent } from './room/chat.component';
 import { SetGameComponent } from './room/set-game.component';
+import { WordComponent } from './room/word.component';
+import { VoteComponent } from './room/vote.component';
 import { GameContentComponent } from './room/game-content.component';
 import { VoteStatusComponent } from './room/vote-status.component';
-import { VoteComponent } from './room/vote.component';
 import { RoomResource } from './resources/room.resource';
 import { UserResource } from './resources/user.resource';
 import { GameResource } from './resources/game.resource';
@@ -34,9 +35,10 @@ import { TokenService } from './token.service';
     UsersComponent,
     ChatComponent,
     SetGameComponent,
+    VoteComponent,
+    WordComponent,
     GameContentComponent,
-    VoteStatusComponent,
-    VoteComponent
+    VoteStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +65,10 @@ import { TokenService } from './token.service';
   entryComponents: [
     EnterRoomComponent,
     SetGameComponent,
+    WordComponent,
+    VoteComponent,
     GameContentComponent,
-    VoteStatusComponent,
-    VoteComponent
+    VoteStatusComponent
   ],
   bootstrap: [AppComponent]
 })
