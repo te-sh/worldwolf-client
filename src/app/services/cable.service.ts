@@ -2,11 +2,11 @@ import { Subject } from 'rxjs';
 import * as _ from 'lodash';
 import * as ActionCable from 'actioncable';
 
-import { environment } from '../environments/environment';
-import { Room } from './models/room.model';
-import { User } from './models/user.model';
-import { Chat } from './models/chat.model';
-import { Vote } from './models/vote.model';
+import { environment } from '../../environments/environment';
+import { Room } from '../models/room.model';
+import { User } from '../models/user.model';
+import { Chat } from '../models/chat.model';
+import { Vote } from '../models/vote.model';
 
 const url = environment.api.websocket;
 

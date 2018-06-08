@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
-import { TokenService } from '../token.service';
+import { TokenService } from '../services/token.service';
 
 const url = environment.api.http;
 

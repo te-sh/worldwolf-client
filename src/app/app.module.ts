@@ -23,8 +23,8 @@ import { RoomResource } from './resources/room.resource';
 import { UserResource } from './resources/user.resource';
 import { GameResource } from './resources/game.resource';
 import { VoteResource } from './resources/vote.resource';
-import { CableService } from './cable.service';
-import { TokenService } from './token.service';
+import { CableService } from './services/cable.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [

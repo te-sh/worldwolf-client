@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   api: {
-    http: `http://${window.location.hostname}:3000`,
-    websocket: `ws://${window.location.hostname}:3000`
+    http: `http://${window.location.hostname}:3200`,
+    websocket: `ws://${window.location.hostname}:3200`
   }
 };
 

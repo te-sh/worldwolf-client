@@ -9,7 +9,7 @@ import { User } from '../models/user.model';
 import { RoomResource } from '../resources/room.resource';
 import { UserResource } from '../resources/user.resource';
 import { GameResource } from '../resources/game.resource';
-import { CableService } from '../cable.service';
+import { CableService } from '../services/cable.service';
 import { SetGameComponent } from './set-game.component';
 import { WordComponent } from './word.component';
 import { VoteComponent } from './vote.component';

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Chat } from '../models/chat.model';
-import { CableService } from '../cable.service';
+import { CableService } from '../services/cable.service';
 
 @Component({
   selector: 'app-chat',

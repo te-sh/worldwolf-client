@@ -7,7 +7,7 @@ import { User } from '../models/user.model';
 import { Game } from '../models/game.model';
 import { Vote } from '../models/vote.model';
 import { VoteResource } from '../resources/vote.resource';
-import { CableService } from '../cable.service';
+import { CableService } from '../services/cable.service';
 
 @Component({
   selector: 'app-vote-status',
