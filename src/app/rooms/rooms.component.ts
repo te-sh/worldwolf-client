@@ -24,6 +24,10 @@ export class RoomsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
     this.roomResource.list()
       .subscribe((rooms) => this.rooms = rooms);
   }

@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
   <span>World Wolf</span>
+  <button mat-icon-button type="button" class="reload"
+          (click)="load()">
+    <mat-icon>repeat</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-table [dataSource]="rooms">

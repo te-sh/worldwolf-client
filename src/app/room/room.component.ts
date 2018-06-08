@@ -43,7 +43,7 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.cableService.disconnect();
   }
 
-  private loadUser() {
+  loadUser() {
     this.userResource.getMine()
       .subscribe(
         (res) => {
@@ -55,7 +55,7 @@ export class RoomComponent implements OnInit, OnDestroy {
       );
   }
 
-  private loadRoom() {
+  loadRoom() {
     this.route.paramMap
       .pipe(
         map((paramMap) => paramMap.get('id')),

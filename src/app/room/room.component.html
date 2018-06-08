@@ -5,6 +5,10 @@
       <mat-icon class="account-icon">account_circle</mat-icon>
       <span>{{ user.name }}</span>
     </div>
+    <button mat-icon-button type="button" class="reload"
+            (click)="loadRoom()">
+      <mat-icon>repeat</mat-icon>
+    </button>
     <button mat-icon-button type="button" class="exit"
             [disabled]="user?.active && room?.game"
             (click)="exit()">
