@@ -30,35 +30,9 @@
   </button>
 </mat-toolbar>
 
-<mat-toolbar *ngIf="roomStatus == 'play-game'">
-  <button mat-button type="button" class="vote"
-          *ngIf="user.id != room.game.creator_id"
-          (click)="word()">
-    ワード
-  </button>
-  <button mat-button type="button" class="vote"
-          *ngIf="user.id != room.game.creator_id"
-          (click)="vote()">
-    投票
-  </button>
-  <button mat-button type="button" class="vote"
-          *ngIf="user.id == room.game.creator_id"
-          (click)="gameContent()">
-    ゲーム内容
-  </button>
-  <button mat-button type="button" class="vote"
-          *ngIf="user.id == room.game.creator_id"
-          (click)="voteStatus()">
-    投票状況
-  </button>
-  <button mat-button type="button" class="finish-game"
-          (click)="finishGame()">
-    <ng-container *ngIf="room.game.creator_id == user.id; then finish; else reset">
-    </ng-container>
-    <ng-template #finish>ゲーム終了</ng-template>
-    <ng-template #reset>リセット</ng-template>
-  </button>
-</mat-toolbar>
+<app-game *ngIf="roomStatus == 'play-game'"
+          [room]="room" [user]="user">
+</app-game>
 
 <div class="users">
   <app-users [users]="room?.users" [game]="room?.game">

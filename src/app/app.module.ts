@@ -13,18 +13,23 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { EnterRoomComponent } from './rooms/enter-room.component';
 import { RoomComponent } from './room/room.component';
 import { UsersComponent } from './room/users.component';
+import { GameComponent } from './room/game.component';
 import { ChatComponent } from './room/chat.component';
 import { SetGameComponent } from './room/set-game.component';
 import { WordComponent } from './room/word.component';
 import { VoteComponent } from './room/vote.component';
 import { GameContentComponent } from './room/game-content.component';
 import { VoteStatusComponent } from './room/vote-status.component';
+import { MessageDialogComponent } from './common/message-dialog.component';
+import { ConfirmDialogComponent } from './common/confirm-dialog.component';
+import { RoomExitGuard } from './room/room-exit.guard';
 import { RoomResource } from './resources/room.resource';
 import { UserResource } from './resources/user.resource';
 import { GameResource } from './resources/game.resource';
 import { VoteResource } from './resources/vote.resource';
 import { CableService } from './services/cable.service';
 import { TokenService } from './services/token.service';
+import { DialogService } from './services/dialog.service';
 
 @NgModule({
   declarations: [
@@ -33,12 +38,15 @@ import { TokenService } from './services/token.service';
     EnterRoomComponent,
     RoomComponent,
     UsersComponent,
+    GameComponent,
     ChatComponent,
     SetGameComponent,
     VoteComponent,
     WordComponent,
     GameContentComponent,
-    VoteStatusComponent
+    VoteStatusComponent,
+    MessageDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +68,8 @@ import { TokenService } from './services/token.service';
     GameResource,
     VoteResource,
     CableService,
-    TokenService
+    TokenService,
+    DialogService
   ],
   entryComponents: [
     EnterRoomComponent,
@@ -68,7 +77,9 @@ import { TokenService } from './services/token.service';
     WordComponent,
     VoteComponent,
     GameContentComponent,
-    VoteStatusComponent
+    VoteStatusComponent,
+    MessageDialogComponent,
+    ConfirmDialogComponent
   ],
   bootstrap: [AppComponent]
 })

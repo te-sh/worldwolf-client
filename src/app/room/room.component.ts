@@ -2,19 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { concatMap, map } from 'rxjs/operators';
-import * as _ from 'lodash';
 
 import { Room } from '../models/room.model';
 import { User } from '../models/user.model';
 import { RoomResource } from '../resources/room.resource';
 import { UserResource } from '../resources/user.resource';
-import { GameResource } from '../resources/game.resource';
 import { CableService } from '../services/cable.service';
 import { SetGameComponent } from './set-game.component';
-import { WordComponent } from './word.component';
-import { VoteComponent } from './vote.component';
-import { GameContentComponent  } from './game-content.component';
-import { VoteStatusComponent } from './vote-status.component';
 
 @Component({
   selector: 'app-room',
@@ -33,7 +27,6 @@ export class RoomComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private roomResource: RoomResource,
     private userResource: UserResource,
-    private gameResource: GameResource,
     private cableService: CableService
   ) { }
 
@@ -87,27 +80,6 @@ export class RoomComponent implements OnInit, OnDestroy {
 
   setGame() {
     this.dialog.open(SetGameComponent, { data: { room: this.room, user: this.user } });
-  }
-
-  word() {
-    this.dialog.open(WordComponent, { data: { room: this.room } });
-  }
-
-  vote() {
-    this.dialog.open(VoteComponent, { data: { room: this.room, user: this.user } });
-  }
-
-  gameContent() {
-    this.dialog.open(GameContentComponent, { data: { room: this.room } });
-  }
-
-  voteStatus() {
-    this.dialog.open(VoteStatusComponent, { data: { room: this.room, user: this.user } });
-  }
-
-  finishGame() {
-    this.gameResource.delete(this.room.game)
-      .subscribe(_.noop);
   }
 
   exit() {
