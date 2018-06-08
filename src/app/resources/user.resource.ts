@@ -45,4 +45,8 @@ export class UserResource {
       .pipe(map((res) => res as User));
   }
 
+  delete(user: User) {
+    return this.http.delete(`${url}/users/${user.id}`);
+  }
+
 }

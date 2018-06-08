@@ -22,6 +22,7 @@ import { GameContentComponent } from './room/game-content.component';
 import { VoteStatusComponent } from './room/vote-status.component';
 import { MessageDialogComponent } from './common/message-dialog.component';
 import { ConfirmDialogComponent } from './common/confirm-dialog.component';
+import { LongPressDirective } from './directives/long-press.directive';
 import { RoomExitGuard } from './room/room-exit.guard';
 import { RoomResource } from './resources/room.resource';
 import { UserResource } from './resources/user.resource';
@@ -46,7 +47,8 @@ import { DialogService } from './services/dialog.service';
     GameContentComponent,
     VoteStatusComponent,
     MessageDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    LongPressDirective
   ],
   imports: [
     BrowserModule,

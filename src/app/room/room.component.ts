@@ -23,6 +23,8 @@ export class RoomComponent implements OnInit, OnDestroy {
   user: User;
   roomStatus: string;
 
+  private forceExit = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -70,6 +72,8 @@ export class RoomComponent implements OnInit, OnDestroy {
     const user = this.room.users.find((u) => u.id === this.user.id);
     if (user) {
       this.user.active = user.active;
+    } else {
+      this.exit(true);
     }
 
     if (!room.game) {
@@ -85,12 +89,15 @@ export class RoomComponent implements OnInit, OnDestroy {
     this.dialog.open(SetGameComponent, { data: { room: this.room, user: this.user } });
   }
 
-  exit() {
+  exit(force = false) {
+    this.forceExit = force;
     this.router.navigate(['/']);
   }
 
   canExit() {
-    if (this.user.active && this.room.game) {
+    if (!this.user || this.forceExit) {
+      return of(true);
+    } else if (this.user.active && this.room.game) {
       return this.dialogService.message('ゲーム中のため退室できません')
         .pipe(map(() => false));
     } else {
