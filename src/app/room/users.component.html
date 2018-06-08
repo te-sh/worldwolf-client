@@ -1,5 +1,5 @@
 <mat-card>
-  <div class="users" fxLayout="row" fxLayoutGap="0.5em">
+  <div class="users" fxLayout="row wrap" fxLayoutGap="0.5em">
     <div *ngFor="let user of users" class="user"
          [class.active]="user.active"
          [class.setter]="user.id == game?.creator_id"
