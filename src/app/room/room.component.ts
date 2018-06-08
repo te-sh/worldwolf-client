@@ -1,13 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { concatMap, map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { concatMap, map, tap } from 'rxjs/operators';
 
 import { Room } from '../models/room.model';
 import { User } from '../models/user.model';
 import { RoomResource } from '../resources/room.resource';
 import { UserResource } from '../resources/user.resource';
 import { CableService } from '../services/cable.service';
+import { DialogService } from '../services/dialog.service';
 import { SetGameComponent } from './set-game.component';
 
 @Component({
@@ -27,7 +29,8 @@ export class RoomComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private roomResource: RoomResource,
     private userResource: UserResource,
-    private cableService: CableService
+    private cableService: CableService,
+    private dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -83,8 +86,26 @@ export class RoomComponent implements OnInit, OnDestroy {
   }
 
   exit() {
-    this.userResource.deleteMine()
-      .subscribe(() => this.router.navigate(['/']));
+    this.router.navigate(['/']);
+  }
+
+  canExit() {
+    if (this.user.active && this.room.game) {
+      return this.dialogService.message('ゲーム中のため退室できません')
+        .pipe(map(() => false));
+    } else {
+      return this.dialogService.confirm('退室してもよろしいですか？')
+        .pipe(
+          concatMap((res) => {
+            if (res) {
+              return this.userResource.deleteMine()
+                .pipe(map(() => true));
+            } else {
+              return of(false);
+            }
+          })
+        );
+    }
   }
 
 }

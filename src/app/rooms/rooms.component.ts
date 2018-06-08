@@ -32,8 +32,7 @@ export class RoomsComponent implements OnInit {
     const dialogRef = this.dialog.open(EnterRoomComponent, { data: { room } });
     dialogRef.afterClosed()
       .pipe(filter(_.identity))
-      .subscribe(() => this.router.navigate(['room', room.id]))
-    ;
+      .subscribe(() => this.router.navigate(['room', room.id]));
   }
 
 }

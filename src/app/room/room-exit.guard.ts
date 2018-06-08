@@ -13,7 +13,7 @@ export class RoomExitGuard implements CanDeactivate<RoomComponent> {
     currentState: RouterStateSnapshot,
     nextState: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
-    return true;
+    return component.canExit();
   }
 
 }

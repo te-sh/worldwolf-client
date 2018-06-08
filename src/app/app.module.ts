@@ -63,6 +63,7 @@ import { DialogService } from './services/dialog.service';
       useClass: AppInterceptor,
       multi: true
     },
+    RoomExitGuard,
     RoomResource,
     UserResource,
     GameResource,
