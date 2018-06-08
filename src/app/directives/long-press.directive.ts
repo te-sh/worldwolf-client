@@ -6,7 +6,7 @@ import { Subscription, timer } from 'rxjs';
 })
 export class LongPressDirective {
 
-  @Output() longPress = new EventEmitter<any>();
+  @Output() appLongPress = new EventEmitter<any>();
 
   private duration = 2000;
 
@@ -47,7 +47,7 @@ export class LongPressDirective {
 
   onDown() {
     this.subscription = timer(this.duration)
-      .subscribe(() => this.longPress.emit());
+      .subscribe(() => this.appLongPress.emit());
   }
 
   onUp() {
