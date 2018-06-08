@@ -11,6 +11,7 @@ mat-card {
     background-color: mat-color($mat-gray, 300);
     border-radius: 10px;
     cursor: pointer;
+    user-select: none;
     margin-top: 10px;
 
     &.active {

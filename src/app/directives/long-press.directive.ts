@@ -2,7 +2,7 @@ import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
 @Directive({
-  selector: '[longPress]'
+  selector: '[appLongPress]'
 })
 export class LongPressDirective {
 

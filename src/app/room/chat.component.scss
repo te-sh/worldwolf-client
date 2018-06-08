@@ -1,5 +1,26 @@
+@import '~@angular/material/theming';
+
 .line {
-  margin: 10px 2px;
+  margin: 2px;
+
+  & > * {
+    padding: 10px 5px;
+  }
+}
+
+.enter, .leave {
+  border-left: solid 3px mat-color($mat-green, 500);
+  background-color: mat-color($mat-green, 50);
+}
+
+.set-game, .start-game, .cancel, .finish {
+  border-left: solid 3px mat-color($mat-purple, 500);
+  background-color: mat-color($mat-purple, 50);
+}
+
+.word {
+  border-left: solid 3px mat-color($mat-red, 500);
+  background-color: mat-color($mat-red, 50);
 }
 
 .votes {

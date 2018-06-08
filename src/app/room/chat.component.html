@@ -8,35 +8,35 @@
 <div>
   <div *ngFor="let chat of chats$ | async" class="line">
     <ng-container [ngSwitch]="chat.action">
-      <ng-container *ngSwitchCase="'chat'">
+      <div *ngSwitchCase="'chat'" class="chat">
         <b>{{ chat.user }}</b> &gt; {{ chat.text }}
-      </ng-container>
-      <ng-container *ngSwitchCase="'enter'">
+      </div>
+      <div *ngSwitchCase="'enter'" class="enter">
         <b>{{ chat.user }}</b> が入室しました
-      </ng-container>
-      <ng-container *ngSwitchCase="'leave'">
+      </div>
+      <div *ngSwitchCase="'leave'" class="leave">
         <b>{{ chat.user }}</b> が退室しました
-      </ng-container>
-      <ng-container *ngSwitchCase="'set-game'">
+      </div>
+      <div *ngSwitchCase="'set-game'" class="set-game">
         <b>{{ chat.user }}</b> が出題中です
-      </ng-container>
-      <ng-container *ngSwitchCase="'start-game'">
+      </div>
+      <div *ngSwitchCase="'start-game'" class="start-game">
         <b>{{ chat.user }}</b> が出題しました
-      </ng-container>
+      </div>
       <ng-container *ngSwitchCase="'finish-game'">
         <ng-container [ngSwitch]="chat.reason">
-          <ng-container *ngSwitchCase="'cancel'">
+          <div *ngSwitchCase="'cancel'" class="cancel">
             出題がキャンセルされました
-          </ng-container>
-          <ng-container *ngSwitchCase="'finish'">
+          </div>
+          <div *ngSwitchCase="'finish'" class="finish">
             ゲームが終了しました
-          </ng-container>
+          </div>
         </ng-container>
       </ng-container>
-      <ng-container *ngSwitchCase="'word'">
+      <div *ngSwitchCase="'word'" class="word">
         あなたのワードは <b>{{ chat.word }}</b> です
-      </ng-container>
-      <ng-container *ngSwitchCase="'game'">
+      </div>
+      <div *ngSwitchCase="'game'" class="game">
         <div fxLayout="column" fxLayoutGap="1ex">
           <div>
             <div class="field-label">村人ワード</div>
@@ -55,8 +55,8 @@
             </div>
           </div>
         </div>
-      </ng-container>
-      <ng-container *ngSwitchCase="'votes'">
+      </div>
+      <div *ngSwitchCase="'votes'" class="votes">
         <div class="field-label">投票状況</div>
         <mat-table [dataSource]="chat.votes" class="votes">
           <ng-container matColumnDef="voter">
@@ -68,10 +68,10 @@
           <mat-row *matRowDef="let room; columns: ['voter', 'votee'];">
           </mat-row>
         </mat-table>
-      </ng-container>
-      <ng-container *ngSwitchCase="'expire'">
+      </div>
+      <div *ngSwitchCase="'expire'" class="expire">
         この部屋は一定時間使用されなかったため閉鎖されます
-      </ng-container>
+      </div>
     </ng-container>
   </div>
 </div>

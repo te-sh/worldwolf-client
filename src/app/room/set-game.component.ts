@@ -31,10 +31,14 @@ export class SetGameComponent implements OnInit {
 
     this.players = room.users.filter((player) => player.active && player.id !== user.id);
 
-    const game = { room_id: room.id, creator_id: user.id };
-    this.dialogRef.afterOpen()
-      .pipe(concatMap(() => this.gameResource.create(game)))
-      .subscribe((res) => this.game = res);
+    if (room.game) {
+      this.game = room.game;
+    } else {
+      const game = { room_id: room.id, creator_id: user.id };
+      this.dialogRef.afterOpen()
+        .pipe(concatMap(() => this.gameResource.create(game)))
+        .subscribe((res) => this.game = res);
+    }
   }
 
   update() {

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { of } from 'rxjs';
 import { concatMap, map, tap } from 'rxjs/operators';
 
@@ -23,6 +23,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   user: User;
   roomStatus: string;
 
+  private dialogRef: MatDialogRef<SetGameComponent, any>;
   private forceExit = false;
 
   constructor(
@@ -80,13 +81,18 @@ export class RoomComponent implements OnInit, OnDestroy {
       this.roomStatus = 'idle';
     } else if (!room.game.playing) {
       this.roomStatus = 'set-game';
+      if (room.game.creator_id === this.user.id && !this.dialogRef) {
+        this.setGame();
+      }
     } else {
       this.roomStatus = 'play-game';
     }
   }
 
   setGame() {
-    this.dialog.open(SetGameComponent, { data: { room: this.room, user: this.user } });
+    this.dialogRef = this.dialog.open(SetGameComponent, { data: { room: this.room, user: this.user } });
+    this.dialogRef.afterClosed()
+      .subscribe(() => this.dialogRef = undefined);
   }
 
   exit(force = false) {

@@ -4,7 +4,7 @@
          [class.active]="user.active"
          [class.setter]="user.id == game?.creator_id"
          (click)="activate(user)"
-         (longPress)="ban(user)">
+         (appLongPress)="ban(user)">
       <span>{{ user.name }}</span>
     </div>
   </div>
