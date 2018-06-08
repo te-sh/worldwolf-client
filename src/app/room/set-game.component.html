@@ -12,6 +12,10 @@
     </div>
     <div>
       <div class="field-label">狼</div>
+      <div fxLayoutAlign="center">
+        <button mat-button type="button" (click)="random(1)">ランダム1人</button>
+        <button mat-button type="button" (click)="random(2)">ランダム2人</button>
+      </div>
       <mat-selection-list #wolves>
         <mat-list-option *ngFor="let player of players" [value]="player.id">
           {{ player.name }}

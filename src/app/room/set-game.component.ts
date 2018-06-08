@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef, MatSelectionList, MAT_DIALOG_DATA } from '@angular/material';
 import { concatMap } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 import { Room } from '../models/room.model';
 import { User } from '../models/user.model';
@@ -39,6 +40,16 @@ export class SetGameComponent implements OnInit {
         .pipe(concatMap(() => this.gameResource.create(game)))
         .subscribe((res) => this.game = res);
     }
+  }
+
+  random(n: number) {
+    const options = this.wolves.options.toArray();
+    if (n > options.length) {
+      return;
+    }
+
+    const wolves = _.sampleSize(options, n);
+    options.forEach((option) => option.selected = _.includes(wolves, option));
   }
 
   update() {

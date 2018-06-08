@@ -1,5 +1,9 @@
 @import '~@angular/material/theming';
 
+mat-form-field {
+  width: 100%;
+}
+
 .error {
   color: mat-color($mat-red, 700);
 }
