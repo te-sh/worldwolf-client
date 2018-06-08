@@ -4,6 +4,7 @@ export class Game {
   id?: string;
   room_id?: string;
   creator_id?: string;
+  updated_at?: string;
   playing?: string;
   normal_word?: string;
   wolf_word?: string;

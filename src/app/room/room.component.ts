@@ -94,7 +94,7 @@ export class RoomComponent implements OnInit, OnDestroy {
       return this.dialogService.message('ゲーム中のため退室できません')
         .pipe(map(() => false));
     } else {
-      return this.dialogService.confirm('退室してもよろしいですか？')
+      return this.dialogService.confirm('退室します。よろしいですか？')
         .pipe(
           concatMap((res) => {
             if (res) {

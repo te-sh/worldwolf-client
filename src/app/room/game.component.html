@@ -1,5 +1,6 @@
 <mat-toolbar class="toolbar">
   <mat-icon>videogame_asset</mat-icon>
+  <span class="time">{{ time }}</span>
   <button mat-button type="button" class="vote"
           *ngIf="user.id != room.game.creator_id"
           (click)="word()">
