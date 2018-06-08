@@ -1,4 +1,5 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
+  <mat-icon>videogame_asset</mat-icon>
   <button mat-button type="button" class="vote"
           *ngIf="user.id != room.game.creator_id"
           (click)="word()">
@@ -19,11 +20,8 @@
           (click)="voteStatus()">
     投票状況
   </button>
-  <button mat-button type="button" class="finish-game"
+  <button mat-icon-button type="button" class="finish-game"
           (click)="finishGame()">
-    <ng-container *ngIf="room.game.creator_id == user.id; then finish; else reset">
-    </ng-container>
-    <ng-template #finish>ゲーム終了</ng-template>
-    <ng-template #reset>リセット</ng-template>
+    <mat-icon>clear</mat-icon>
   </button>
 </mat-toolbar>

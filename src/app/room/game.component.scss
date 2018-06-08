@@ -1,3 +1,9 @@
+@import '~@angular/material/theming';
+
+.toolbar {
+  background-color: mat-color($mat-teal, 50);
+}
+
 .finish-game {
   margin-left: auto;
 }
